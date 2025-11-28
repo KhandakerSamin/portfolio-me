@@ -94,13 +94,11 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
             <p className="text-gray-400 text-sm">
               © {currentYear} Khandaker Samin Yeasar. All rights reserved.
             </p>
-            <p className="text-gray-400 text-sm">
-              Built with <span className="text-blue-400">Next.js</span> & <span className="text-purple-400">Tailwind CSS</span>
-            </p>
+            
           </div>
         </div>
       </div>

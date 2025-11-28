@@ -81,22 +81,22 @@ export default function Contact() {
   ];
 
   return (
-    <section className="relative z-10 w-full py-20 px-6" id="contact">
+    <section className="relative z-10 w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6" id="contact">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-400 to-purple-400">
               Get In
             </span>{" "}
             <span className="text-white">Touch</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto px-4">
             Have a project in mind or want to collaborate? Feel free to reach out!
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Information */}
           <div>
             {/* Contact Cards */}
@@ -109,19 +109,19 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="group block"
                 >
-                  <div className="bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
-                    <div className="flex items-center gap-4">
+                  <div className="bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-4 sm:p-6 hover:border-gray-600 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+                    <div className="flex items-center gap-3 sm:gap-4">
                       {/* Icon */}
-                      <div className={`w-16 h-16 bg-linear-to-br ${info.gradient} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <info.icon className="w-8 h-8 text-white" />
+                      <div className={`w-12 h-12 sm:w-16 sm:h-16 shrink-0 bg-linear-to-br ${info.gradient} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        <info.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                       </div>
 
                       {/* Info */}
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <h3 className="text-white font-semibold text-lg mb-1">
                           {info.title}
                         </h3>
-                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm break-all">
                           {info.value}
                         </p>
                       </div>
@@ -137,9 +137,9 @@ export default function Contact() {
             </div>
 
             {/* Social Links */}
-            <div className="bg-linear-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Connect With Me</h3>
-              <div className="flex gap-4">
+            <div className="bg-linear-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-4 sm:p-6 lg:p-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Connect With Me</h3>
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}

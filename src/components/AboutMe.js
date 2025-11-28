@@ -35,12 +35,6 @@ export default function AboutMe() {
       organization: "Bondi Pathshala",
       icon: "🌟",
       description: "Representing and promoting educational initiatives"
-    },
-    {
-      title: "Champion",
-      organization: "National Science Fair (Brahmanbaria)",
-      icon: "🏆",
-      description: "First place in Science Fair competition - 2019"
     }
   ];
 
@@ -116,7 +110,7 @@ export default function AboutMe() {
 
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                   {/* Timeline Dot */}
-                  <div className="shrink-0 w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-2xl">
+                  <div className=" w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-2xl">
                     📚
                   </div>
 
@@ -152,7 +146,7 @@ export default function AboutMe() {
             <span className="text-white">& Recognition</span>
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {achievements.map((achievement, index) => (
               <div
                 key={index}

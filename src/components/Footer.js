@@ -32,8 +32,8 @@ export default function Footer() {
 
   return (
     <footer className="relative z-10 w-full bg-gray-900/50 backdrop-blur-sm border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 lg:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* About Section */}
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -93,8 +93,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+        <div className="pt-6 sm:pt-8 border-t border-gray-800">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-2 sm:gap-4">
             <p className="text-gray-400 text-sm">
               © {currentYear} Khandaker Samin Yeasar. All rights reserved.
             </p>

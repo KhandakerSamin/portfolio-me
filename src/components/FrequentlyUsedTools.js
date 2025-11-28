@@ -36,10 +36,10 @@ export default function FrequentlyUsedTools() {
   );
 
   return (
-    <section className="relative z-10 w-full py-20 px-6" id="tools">
+    <section className="relative z-10 w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6" id="tools">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 lg:mb-16">
           <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">
             Frequently Used
           </span>{" "}
@@ -47,8 +47,8 @@ export default function FrequentlyUsedTools() {
         </h2>
 
         {/* Frameworks Section */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-bold text-blue-400 mb-6 text-center">
+        <div className="mb-8 sm:mb-10 lg:mb-12">
+          <h3 className="text-xl sm:text-2xl font-bold text-blue-400 mb-4 sm:mb-6 text-center">
             Frameworks & Libraries
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">

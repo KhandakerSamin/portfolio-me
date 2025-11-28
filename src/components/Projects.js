@@ -26,39 +26,39 @@ const ProjectModal = ({ project, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl max-h-[90vh] bg-gray-900 border border-gray-700 rounded-3xl overflow-hidden"
+        className="relative w-full max-w-4xl my-4 bg-gray-900 border border-gray-700 rounded-2xl sm:rounded-3xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-800/80 hover:bg-gray-700 border border-gray-600 rounded-full flex items-center justify-center text-white transition-colors"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-gray-800/80 hover:bg-gray-700 border border-gray-600 rounded-full flex items-center justify-center text-white transition-colors"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         {/* Scrollable Content */}
-        <div className="overflow-y-auto max-h-[90vh] p-8">
+        <div className="overflow-y-auto max-h-[85vh] p-4 sm:p-6 lg:p-8">
           {/* Header */}
-          <div className="mb-6">
-            <h2 className={`text-4xl font-bold mb-2 text-transparent bg-clip-text bg-linear-to-r ${project.gradient}`}>
+          <div className="mb-4 sm:mb-6 pr-8">
+            <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 text-transparent bg-clip-text bg-linear-to-r ${project.gradient}`}>
               {project.title}
             </h2>
-            <p className="text-xl text-gray-400">{project.subtitle}</p>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-400">{project.subtitle}</p>
           </div>
 
           {/* Full Description */}
-          <p className="text-gray-300 leading-relaxed mb-8">
+          <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6 sm:mb-8">
             {project.fullDescription}
           </p>
 
           {/* Features */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-white mb-4">Key Features</h3>
+          <div className="mb-6 sm:mb-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Key Features</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {project.features.map((feature, index) => (
                 <div
@@ -343,23 +343,23 @@ export default function Projects() {
   ];
 
   return (
-    <section className="relative z-10 w-full py-20 px-6" id="projects">
+    <section className="relative z-10 w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6" id="projects">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 via-pink-400 to-blue-400">
               Featured
             </span>{" "}
             <span className="text-white">Projects</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto px-4">
             Transforming ideas into dynamic, user-friendly digital experiences with modern web technologies
           </p>
         </div>
 
         {/* Projects List - Row wise */}
-        <div className="space-y-8 mb-12">
+        <div className="space-y-6 sm:space-y-8 mb-8 sm:mb-10 lg:mb-12">
           {projects.map((project, index) => (
             <ProjectCard 
               key={project.id} 

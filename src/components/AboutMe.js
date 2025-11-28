@@ -116,7 +116,7 @@ export default function AboutMe() {
 
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                   {/* Timeline Dot */}
-                  <div className="flex-shrink-0 w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-2xl">
+                  <div className="shrink-0 w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-2xl">
                     📚
                   </div>
 

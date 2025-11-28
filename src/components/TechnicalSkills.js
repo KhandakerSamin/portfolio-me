@@ -1,58 +1,74 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+
 export default function TechnicalSkills() {
+  const [visibleCards, setVisibleCards] = useState([]);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = cardsRef.current.indexOf(entry.target);
+            if (index !== -1 && !visibleCards.includes(index)) {
+              setVisibleCards((prev) => [...prev, index]);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, [visibleCards]);
+
   const skills = [
     {
       name: "JavaScript",
       icon: "⚡",
       description: "Expert level proficiency in modern ES6+ JavaScript",
-      level: "Expert"
+      level: "Expert",
+      size: "square"
     },
     {
       name: "React.js",
       icon: "⚛️",
       description: "Building dynamic and responsive user interfaces",
-      level: "Advanced"
+      level: "Advanced",
+      size: "wide"
     },
     {
       name: "Next.js",
       icon: "▲",
       description: "Currently working with Next.js for modern web apps",
-      level: "Advanced"
+      level: "Advanced",
+      size: "medium"
     },
     {
       name: "Node.js",
       icon: "🟢",
       description: "Backend development with Node.js runtime",
-      level: "Advanced"
+      level: "Advanced",
+      size: "medium"
     },
     {
       name: "MongoDB",
       icon: "🍃",
       description: "NoSQL database management and design",
-      level: "Advanced"
+      level: "Advanced",
+      size: "square"
     },
     {
       name: "Express.js",
       icon: "🚂",
       description: "RESTful API development with Express",
-      level: "Advanced"
-    },
-    {
-      name: "Python",
-      icon: "🐍",
-      description: "Growing skills in Python and AI integration",
-      level: "Intermediate"
-    },
-    {
-      name: "C/C++",
-      icon: "⚙️",
-      description: "Foundational programming and problem solving",
-      level: "Intermediate"
-    },
-    {
-      name: "Java",
-      icon: "☕",
-      description: "Object-oriented programming concepts",
-      level: "Intermediate"
+      level: "Advanced",
+      size: "wide"
     }
   ];
 
@@ -67,43 +83,130 @@ export default function TechnicalSkills() {
           <span className="text-white">Skills</span>
         </h2>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className="group relative bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20"
-            >
-              {/* Icon */}
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {skill.icon}
-              </div>
-
-              {/* Skill Name */}
-              <h3 className="text-2xl font-bold text-white mb-2">
-                {skill.name}
-              </h3>
-
-              {/* Description */}
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                {skill.description}
-              </p>
-
-              {/* Level Badge */}
-              <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                skill.level === 'Expert' 
-                  ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                  : skill.level === 'Advanced'
-                  ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                  : 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-              }`}>
-                {skill.level}
-              </span>
-
-              {/* Hover Effect Gradient */}
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300 pointer-events-none"></div>
+        {/* Skills Grid - Row 1 */}
+        <div className="grid grid-cols-12 gap-6 mb-6">
+          {/* Medium (JavaScript) */}
+          <div
+            ref={(el) => (cardsRef.current[0] = el)}
+            className={`col-span-12 md:col-span-3 group relative bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 ${
+              visibleCards.includes(0)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "0ms" }}>
+            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {skills[0].icon}
             </div>
-          ))}
+            <h3 className="text-2xl font-bold text-white mb-2">{skills[0].name}</h3>
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed">{skills[0].description}</p>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30">
+              {skills[0].level}
+            </span>
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300 pointer-events-none"></div>
+          </div>
+
+          {/* Small (React) */}
+          <div
+            ref={(el) => (cardsRef.current[1] = el)}
+            className={`col-span-12 md:col-span-4 group relative bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 ${
+              visibleCards.includes(1)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "100ms" }}>
+            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {skills[1].icon}
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">{skills[1].name}</h3>
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed">{skills[1].description}</p>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              {skills[1].level}
+            </span>
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300 pointer-events-none"></div>
+          </div>
+
+          {/* Big (Next.js) */}
+          <div
+            ref={(el) => (cardsRef.current[2] = el)}
+            className={`col-span-12 md:col-span-5 group relative bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 ${
+              visibleCards.includes(2)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "200ms" }}>
+            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {skills[2].icon}
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">{skills[2].name}</h3>
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed">{skills[2].description}</p>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              {skills[2].level}
+            </span>
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300 pointer-events-none"></div>
+          </div>
+        </div>
+
+        {/* Skills Grid - Row 2 */}
+        <div className="grid grid-cols-12 gap-6">
+          {/* Big (Node.js) */}
+          <div
+            ref={(el) => (cardsRef.current[3] = el)}
+            className={`col-span-12 md:col-span-5 group relative bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 ${
+              visibleCards.includes(3)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "0ms" }}>
+            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {skills[3].icon}
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">{skills[3].name}</h3>
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed">{skills[3].description}</p>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              {skills[3].level}
+            </span>
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300 pointer-events-none"></div>
+          </div>
+
+          {/* Small (MongoDB) */}
+          <div
+            ref={(el) => (cardsRef.current[4] = el)}
+            className={`col-span-12 md:col-span-4 group relative bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 ${
+              visibleCards.includes(4)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "100ms" }}>
+            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {skills[4].icon}
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">{skills[4].name}</h3>
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed">{skills[4].description}</p>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              {skills[4].level}
+            </span>
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300 pointer-events-none"></div>
+          </div>
+
+          {/* Medium (Express) */}
+          <div
+            ref={(el) => (cardsRef.current[5] = el)}
+            className={`col-span-12 md:col-span-3 group relative bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 ${
+              visibleCards.includes(5)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "200ms" }}>
+            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {skills[5].icon}
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">{skills[5].name}</h3>
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed">{skills[5].description}</p>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              {skills[5].level}
+            </span>
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-2xl transition-all duration-300 pointer-events-none"></div>
+          </div>
         </div>
 
         {/* Additional Note */}

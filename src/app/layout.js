@@ -40,8 +40,8 @@ export const metadata = {
     },
   },
   icons: {
-    icon: '/icon',
-    apple: '/apple-icon',
+    icon: '/code.png',
+    apple: '/code.png',
   },
 };
 

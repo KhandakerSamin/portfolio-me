@@ -42,7 +42,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-2 text-base sm:text-lg font-semibold tracking-wide hover:text-blue-400 transition-colors">
               <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />
               <span className="hidden sm:inline">Khandaker Samin Yeasar</span>
-              <span className="sm:hidden">KSY</span>
+              <span className="sm:hidden">Khandaker Samin</span>
             </Link>
           </div>
 

@@ -44,11 +44,12 @@ export default function Hero() {
               See Projects
             </a>
             <a 
-              href="/cv.pdf"
-              download
+              href="https://drive.google.com/file/d/1ZcWQtAcj500uE-1P6BKRHHMXGh5lnsyD/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-3 bg-transparent border-2 border-gray-600 text-white font-medium rounded-full hover:border-gray-400 hover:bg-gray-800/30 transition-all duration-300 text-center"
             >
-              Download CV
+              View Resume
             </a>
           </div>
         </div>

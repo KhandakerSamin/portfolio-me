@@ -26,11 +26,11 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { name: "About", href: "/about" },
-    { name: "Skills", href: "/#skills" },
-    { name: "Tools", href: "/#tools" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Contact", href: "/#contact" },
+       { name: "Skills", href: "/#skills" },
+       { name: "Tools", href: "/#tools" },
+       { name: "Projects", href: "/#projects" },
+       { name: "Contact", href: "/#contact" },
+       { name: "About", href: "/about" },
   ];
 
   return (
@@ -53,9 +53,13 @@ export default function Navbar() {
                 key={index}
                 href={link.href}
                 onClick={(e) => handleSmoothScroll(e, link.href)}
-                className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
+                className="group relative text-gray-300 hover:text-white transition-all duration-300 text-sm font-medium py-2"
               >
-                {link.name}
+                <span className="relative z-10">{link.name}</span>
+                {/* Animated underline */}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300 ease-out"></span>
+                {/* Glow effect */}
+                <span className="absolute inset-0 bg-linear-to-r from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 rounded-lg blur-sm transition-all duration-300 -z-10"></span>
               </Link>
             ))}
           </div>
@@ -94,7 +98,7 @@ export default function Navbar() {
         isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}>
         <div 
-          className={`relative w-full max-w-sm bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-blue-500/30 rounded-3xl shadow-2xl shadow-blue-500/20 transform transition-all duration-300 ${
+          className={`relative w-full max-w-sm bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-blue-500/30 rounded-3xl shadow-2xl shadow-blue-500/20 transform transition-all duration-300 ${
             isMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
           }`}
           onClick={(e) => e.stopPropagation()}
@@ -102,7 +106,7 @@ export default function Navbar() {
           {/* Close Button */}
           <button 
             onClick={() => setIsMenuOpen(false)}
-            className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-br from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-110"
+            className="absolute -top-3 -right-3 w-10 h-10 bg-linear-to-br from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-110"
             aria-label="Close menu"
           >
             <X className="w-5 h-5" />
@@ -112,7 +116,7 @@ export default function Navbar() {
           <div className="text-center p-6 pb-4 border-b border-gray-700/50">
             <div className="flex items-center justify-center gap-2 mb-2">
               <Code2 className="w-7 h-7 text-blue-400" />
-              <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Menu</span>
+              <span className="text-xl font-bold text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-purple-400">Menu</span>
             </div>
             <p className="text-gray-400 text-xs">Navigate to your destination</p>
           </div>
@@ -124,7 +128,7 @@ export default function Navbar() {
                 key={index}
                 href={link.href}
                 onClick={(e) => handleSmoothScroll(e, link.href)}
-                className="group relative flex items-center justify-between text-gray-300 hover:text-white transition-all duration-300 text-base font-medium py-4 px-5 rounded-xl hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 border border-transparent hover:border-blue-500/30"
+                className="group relative flex items-center justify-between text-gray-300 hover:text-white transition-all duration-300 text-base font-medium py-4 px-5 rounded-xl hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 border border-transparent hover:border-blue-500/30"
               >
                 <span className="relative z-10">{link.name}</span>
                 <span className="text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-300">

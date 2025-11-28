@@ -1,118 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { ExternalLink, Github, X, Sparkles, ShoppingCart, CreditCard, Zap, Mail, Smartphone, Shield, Microscope, Newspaper, Bot, Users, BarChart3, Palette, Lock, Target, Link as LinkIcon } from "lucide-react";
-
-// Feature icon mapping
-const getFeatureIcon = (index, projectId) => {
-  if (projectId === 1) {
-    const icons = [ShoppingCart, CreditCard, Zap, Mail, Smartphone, Shield];
-    const Icon = icons[index] || Sparkles;
-    return <Icon className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />;
-  } else if (projectId === 2) {
-    const icons = [Microscope, Newspaper, Bot, Users, BarChart3, Palette];
-    const Icon = icons[index] || Sparkles;
-    return <Icon className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />;
-  } else {
-    const icons = [Lock, BarChart3, Target, LinkIcon, Smartphone, Zap];
-    const Icon = icons[index] || Sparkles;
-    return <Icon className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />;
-  }
-};
-
-// ProjectModal component defined outside
-const ProjectModal = ({ project, onClose }) => {
-  if (!project) return null;
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
-      onClick={onClose}
-    >
-      <div
-        className="relative w-full max-w-4xl my-4 bg-gray-900 border border-gray-700 rounded-2xl sm:rounded-3xl overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-gray-800/80 hover:bg-gray-700 border border-gray-600 rounded-full flex items-center justify-center text-white transition-colors"
-        >
-          <X className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
-
-        {/* Scrollable Content */}
-        <div className="overflow-y-auto max-h-[85vh] p-4 sm:p-6 lg:p-8">
-          {/* Header */}
-          <div className="mb-4 sm:mb-6 pr-8">
-            <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 text-transparent bg-clip-text bg-linear-to-r ${project.gradient}`}>
-              {project.title}
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-400">{project.subtitle}</p>
-          </div>
-
-          {/* Full Description */}
-          <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6 sm:mb-8">
-            {project.fullDescription}
-          </p>
-
-          {/* Features */}
-          <div className="mb-6 sm:mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Key Features</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {project.features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-2 p-3 bg-gray-800/50 border border-gray-700/50 rounded-lg"
-                >
-                  {getFeatureIcon(index, project.id)}
-                  <span className="text-gray-300 text-sm">{feature}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Technologies */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-white mb-4">Tech Stack</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm text-gray-300"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="flex flex-wrap gap-4">
-            <a
-              href={project.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-6 py-3 bg-linear-to-r ${project.gradient} text-white rounded-full font-medium hover:opacity-90 transition-opacity`}
-            >
-              <Github className="w-5 h-5" />
-              <span>GitHub Repository</span>
-            </a>
-            <a
-              href={project.links.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white rounded-full font-medium transition-colors"
-            >
-              <ExternalLink className="w-5 h-5" />
-              <span>Live Demo</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import { ExternalLink, Github, Sparkles, ArrowRight } from "lucide-react";
 
 // ProjectCard component - Row layout
 const ProjectCard = ({ project, onClick, index }) => {
@@ -213,7 +102,7 @@ const ProjectCard = ({ project, onClick, index }) => {
               onClick={onClick}
               className={`flex-1 px-4 py-2 bg-linear-to-r ${project.gradient} text-white rounded-lg font-medium hover:opacity-90 transition-opacity text-sm flex items-center justify-center gap-2`}
             >
-              <ExternalLink className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4" />
               View Details
             </button>
             <a
@@ -247,25 +136,16 @@ const ProjectCard = ({ project, onClick, index }) => {
 };
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const router = useRouter();
 
   const projects = [
     {
-      id: 1,
+      id: "lebanese-grill-house",
       title: "Lebanese Grill House",
       subtitle: "Full Stack Restaurant Ordering Platform",
       description: "A modern, production-ready restaurant ordering system with real-time order management, secure payment processing via Stripe, and an admin dashboard.",
-      fullDescription: "Lebanese Grill House is a comprehensive food ordering platform designed to handle the complete order lifecycle from browsing to payment to order fulfillment. Features real-time admin notifications via WebSockets, secure payment processing with Stripe (including Apple Pay/Google Pay), and a responsive UI built with modern web technologies.",
       image: "/p1.png",
       technologies: ["Next.js 16", "Express.js", "MongoDB", "Stripe", "Socket.IO", "Tailwind CSS"],
-      features: [
-        "Smart basket system with real-time price calculation",
-        "Secure Stripe payments with Apple Pay/Google Pay",
-        "Real-time admin notifications with Socket.IO",
-        "Automated email confirmations",
-        "Fully responsive mobile-first design",
-        "Rate limiting and security features"
-      ],
       stats: {
         commits: "150+",
         lines: "5000+",
@@ -274,28 +154,18 @@ export default function Projects() {
       links: {
         github: "https://github.com/KhandakerSamin/Lebanese_Grill_House",
         live: "https://lebanse-grill-house.vercel.app/",
-        case_study: "#"
       },
       category: "Full Stack",
       featured: true,
       gradient: "from-orange-500 to-red-500"
     },
     {
-      id: 2,
+      id: "data-science-lab-website",
       title: "Data Science Lab Website",
       subtitle: "University Research Lab Platform",
       description: "A comprehensive full-stack web application for the Data Science Lab, featuring research projects, event management, and an AI-powered chatbot.",
-      fullDescription: "The Data Science Lab Website serves as the digital hub for a university's Data Science Lab. It provides a comprehensive platform for showcasing research, managing events, facilitating club activities, and engaging visitors through an interactive chatbot.",
       image: "/p2.png",
       technologies: ["Next.js 15", "Express.js", "MongoDB", "Framer Motion", "EmailJS", "Radix UI"],
-      features: [
-        "Dynamic research project showcase",
-        "Event management system with registration",
-        "AI-powered chatbot for visitor engagement",
-        "Team member profiles and management",
-        "Kaggle API integration for competitions",
-        "Modern animations with Framer Motion"
-      ],
       stats: {
         commits: "200+",
         lines: "8000+",
@@ -304,28 +174,18 @@ export default function Projects() {
       links: {
         github: "https://github.com/KhandakerSamin/DataScience_Lab_Website",
         live: "https://data-science-lab-diu.vercel.app/",
-        case_study: "#"
       },
       category: "Full Stack",
       featured: true,
       gradient: "from-blue-500 to-purple-500"
     },
     {
-      id: 3,
+      id: "slidelink",
       title: "SlideLink",
       subtitle: "Student Presentation Collection Manager",
       description: "A modern web application to streamline the collection and management of student presentation slides with password-protected collections.",
-      fullDescription: "SlideLink solves the common problem of collecting student presentation materials during courses. Instructors can create dedicated collections with automatic organization, real-time tracking, and easy access for all team members.",
       image: "/p3.png",
       technologies: ["Next.js 15", "React 19", "Express.js", "MongoDB", "Tailwind CSS 4"],
-      features: [
-        "Password-protected collection access",
-        "Real-time dashboard with analytics",
-        "Team-based submission system",
-        "Direct Google Slides/PowerPoint links",
-        "Fully responsive design",
-        "Fast performance with Next.js 15"
-      ],
       stats: {
         commits: "80+",
         lines: "3000+",
@@ -334,7 +194,6 @@ export default function Projects() {
       links: {
         github: "https://github.com/KhandakerSamin/SlideLink-Frontend",
         live: "https://slidelink.vercel.app/",
-        case_study: "#"
       },
       category: "Full Stack",
       featured: false,
@@ -365,7 +224,7 @@ export default function Projects() {
               key={project.id} 
               project={project}
               index={index}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => router.push(`/projects/${project.id}`)}
             />
           ))}
         </div>
@@ -383,14 +242,6 @@ export default function Projects() {
           </a>
         </div>
       </div>
-
-      {/* Project Modal */}
-      {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
-      )}
     </section>
   );
 }

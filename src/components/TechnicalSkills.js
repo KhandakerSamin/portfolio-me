@@ -94,7 +94,7 @@ export default function TechnicalSkills() {
                 : "opacity-0 translate-y-10"
             }`}
             style={{ transitionDelay: "0ms" }}>
-            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-5xl mb-4">
               {skills[0].icon}
             </div>
             <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors duration-300">{skills[0].name}</h3>
@@ -113,7 +113,7 @@ export default function TechnicalSkills() {
                 : "opacity-0 translate-y-10"
             }`}
             style={{ transitionDelay: "100ms" }}>
-            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-5xl mb-4">
               {skills[1].icon}
             </div>
             <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">{skills[1].name}</h3>
@@ -132,7 +132,7 @@ export default function TechnicalSkills() {
                 : "opacity-0 translate-y-10"
             }`}
             style={{ transitionDelay: "200ms" }}>
-            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-5xl mb-4">
               {skills[2].icon}
             </div>
             <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">{skills[2].name}</h3>
@@ -154,7 +154,7 @@ export default function TechnicalSkills() {
                 : "opacity-0 translate-y-10"
             }`}
             style={{ transitionDelay: "0ms" }}>
-            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-5xl mb-4">
               {skills[3].icon}
             </div>
             <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">{skills[3].name}</h3>
@@ -174,7 +174,7 @@ export default function TechnicalSkills() {
                 : "opacity-0 translate-y-10"
             }`}
             style={{ transitionDelay: "100ms" }}>
-            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-5xl mb-4">
               {skills[4].icon}
             </div>
             <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">{skills[4].name}</h3>
@@ -193,7 +193,7 @@ export default function TechnicalSkills() {
                 : "opacity-0 translate-y-10"
             }`}
             style={{ transitionDelay: "200ms" }}>
-            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-5xl mb-4">
               {skills[5].icon}
             </div>
             <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">{skills[5].name}</h3>

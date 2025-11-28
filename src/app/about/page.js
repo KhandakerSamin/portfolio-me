@@ -1,12 +1,8 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import TechnicalSkills from "@/components/TechnicalSkills";
-import FrequentlyUsedTools from "@/components/FrequentlyUsedTools";
-import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
+import AboutMe from "@/components/AboutMe";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+export default function AboutPage() {
   return (
     <div className="min-h-screen w-full bg-black relative">
       {/* Dark Noise Colored Background */}
@@ -24,14 +20,10 @@ export default function Home() {
         }}
       />
       
-      {/* Your Content/Components */}
+      {/* Content */}
       <div className="relative z-10">
         <Navbar />
-        <Hero />
-        <TechnicalSkills />
-        <FrequentlyUsedTools />
-        <Projects />
-        <Contact />
+        <AboutMe />
         <Footer />
       </div>
     </div>

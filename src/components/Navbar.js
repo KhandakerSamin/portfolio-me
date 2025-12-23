@@ -67,20 +67,27 @@ export default function Navbar() {
 
           {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.href}
-                onClick={(e) => handleSmoothScroll(e, link.href)}
-                className="group relative text-gray-300 hover:text-white transition-all duration-300 text-sm font-medium py-2"
-              >
-                <span className="relative z-10">{link.name}</span>
-                {/* Animated underline */}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300 ease-out"></span>
-                {/* Glow effect */}
-                <span className="absolute inset-0 bg-linear-to-r from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 rounded-lg blur-sm transition-all duration-300 -z-10"></span>
-              </Link>
-            ))}
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.href || (pathname === "/" && link.href.startsWith("/#"));
+              return (
+                <Link
+                  key={index}
+                  href={link.href}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
+                  className={`group relative transition-all duration-300 text-sm font-medium py-2 ${
+                    isActive ? "text-blue-400" : "text-gray-300 hover:text-white"
+                  }`}
+                >
+                  <span className="relative z-10">{link.name}</span>
+                  {/* Animated underline */}
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-linear-to-r from-blue-400 to-purple-400 transition-all duration-300 ease-out ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`}></span>
+                  {/* Glow effect */}
+                  <span className="absolute inset-0 bg-linear-to-r from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 rounded-lg blur-sm transition-all duration-300 -z-10"></span>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile Menu Button - Animated Hamburger */}
@@ -142,19 +149,23 @@ export default function Navbar() {
 
           {/* Menu Links */}
           <div className="p-6 space-y-2 max-h-[60vh] overflow-y-auto">
-            {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.href}
-                onClick={(e) => handleSmoothScroll(e, link.href)}
-                className="group relative flex items-center justify-between text-gray-300 hover:text-white transition-all duration-300 text-base font-medium py-4 px-5 rounded-xl hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 border border-transparent hover:border-blue-500/30"
-              >
-                <span className="relative z-10">{link.name}</span>
-                <span className="text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-300">
-                  →
-                </span>
-              </Link>
-            ))}
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.href || (pathname === "/" && link.href.startsWith("/#"));
+              return (
+                <Link
+                  key={index}
+                  href={link.href}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
+                  className={`group relative flex items-center justify-center transition-all duration-300 text-base font-medium py-4 px-5 rounded-xl border ${
+                    isActive
+                      ? "text-blue-400 bg-blue-500/10 border-blue-500/30"
+                      : "text-gray-300 hover:text-white hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 border-transparent hover:border-blue-500/30"
+                  }`}
+                >
+                  <span className="relative z-10">{link.name}</span>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Menu Footer */}

@@ -68,7 +68,7 @@ export default function Navbar() {
           {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => {
-              const isActive = pathname === link.href || (pathname === "/" && link.href.startsWith("/#"));
+              const isActive = pathname === link.href;
               return (
                 <Link
                   key={index}
@@ -150,7 +150,7 @@ export default function Navbar() {
           {/* Menu Links */}
           <div className="p-6 space-y-2 max-h-[60vh] overflow-y-auto">
             {navLinks.map((link, index) => {
-              const isActive = pathname === link.href || (pathname === "/" && link.href.startsWith("/#"));
+              const isActive = pathname === link.href;
               return (
                 <Link
                   key={index}

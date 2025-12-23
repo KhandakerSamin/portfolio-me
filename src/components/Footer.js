@@ -18,7 +18,7 @@ export default function Footer() {
     {
       name: "Email",
       icon: Mail,
-      url: "https://www.linkedin.com/in/khandakersaminyeasar/",
+      url: "mailto:khandakersaminyeasar@gmail.com",
     },
   ];
 

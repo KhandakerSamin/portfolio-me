@@ -39,8 +39,8 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "Contact via LinkedIn",
-      link: "https://www.linkedin.com/in/khandakersaminyeasar/",
+      value: "khandakersaminyeasar@gmail.com",
+      link: "mailto:khandakersaminyeasar@gmail.com",
       gradient: "from-blue-500 to-cyan-500"
     },
     {

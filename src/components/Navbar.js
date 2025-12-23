@@ -2,26 +2,42 @@
 import Link from "next/link";
 import { Menu, X, Code2 } from "lucide-react";
 import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleSmoothScroll = (e, href) => {
     if (href.startsWith("/#")) {
       e.preventDefault();
       const id = href.substring(2); // Remove /# from href
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        setIsMenuOpen(false);
+      
+      // If not on home page, navigate to home first
+      if (pathname !== "/") {
+        router.push(href);
+      } else {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
+      setIsMenuOpen(false);
     } else if (href.startsWith("#")) {
       e.preventDefault();
-      const element = document.getElementById(href.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        setIsMenuOpen(false);
+      const id = href.substring(1);
+      
+      // If not on home page, navigate to home first
+      if (pathname !== "/") {
+        router.push("/" + href);
+      } else {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
+      setIsMenuOpen(false);
     }
   };
 

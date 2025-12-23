@@ -38,6 +38,9 @@ export default function Navbar() {
         }
       }
       setIsMenuOpen(false);
+    } else {
+      // For regular links like /about, just close the menu
+      setIsMenuOpen(false);
     }
   };
 

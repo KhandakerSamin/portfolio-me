@@ -88,7 +88,7 @@ export default function TechnicalSkills() {
           {/* Medium (JavaScript) */}
           <div
             ref={(el) => (cardsRef.current[0] = el)}
-            className={`col-span-12 md:col-span-3 group relative bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-green-500/70 hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/20 ${
+            className={`col-span-12 md:col-span-3 group relative bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-green-500/70 hover:-translate-y-2 hover:rotate-1 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/20 ${
               visibleCards.includes(0)
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"

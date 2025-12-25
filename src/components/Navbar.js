@@ -72,7 +72,7 @@ export default function Navbar() {
                 key={index}
                 href={link.href}
                 onClick={(e) => handleSmoothScroll(e, link.href)}
-                className="group relative text-gray-300 hover:text-white transition-all duration-300 text-sm font-medium py-2"
+                className="group relative text-gray-300 hover:text-white transition-all duration-300 text-sm font-medium py-2 hover:scale-110"
               >
                 <span className="relative z-10">{link.name}</span>
                 {/* Animated underline */}

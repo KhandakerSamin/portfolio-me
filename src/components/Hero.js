@@ -39,7 +39,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-2 sm:pt-4">
             <a 
               href="#projects"
-              className="px-8 py-3 bg-linear-to-r from-blue-500 to-purple-500 text-white font-medium rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg shadow-blue-500/50 text-center"
+              className="px-8 py-3 bg-linear-to-r from-blue-500 to-purple-500 text-white font-medium rounded-full hover:from-blue-600 hover:to-purple-600 hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-500/50 text-center"
             >
               See Projects
             </a>
@@ -47,7 +47,7 @@ export default function Hero() {
               href="https://drive.google.com/file/d/1ZcWQtAcj500uE-1P6BKRHHMXGh5lnsyD/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 bg-transparent border-2 border-gray-600 text-white font-medium rounded-full hover:border-gray-400 hover:bg-gray-800/30 transition-all duration-300 text-center"
+              className="px-8 py-3 bg-transparent border-2 border-gray-600 text-white font-medium rounded-full hover:border-gray-400 hover:bg-gray-800/30 hover:scale-105 transition-all duration-300 text-center"
             >
               View Resume
             </a>

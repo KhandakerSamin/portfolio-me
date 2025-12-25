@@ -146,7 +146,7 @@ export default function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center gap-2 px-6 py-3 bg-gray-800/50 hover:bg-gray-700 border border-gray-700/50 rounded-full transition-all duration-300 ${social.color}`}
+                    className={`group flex items-center gap-2 px-6 py-3 bg-gray-800/50 hover:bg-gray-700 hover:scale-110 border border-gray-700/50 rounded-full transition-all duration-300 ${social.color}`}
                     title={social.name}
                   >
                     <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
